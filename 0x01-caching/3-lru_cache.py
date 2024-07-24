@@ -7,18 +7,20 @@ from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """Represents an object that allows storing and
-    retrieving items from a dictionary with a LRU
-    removal mechanism when the limit is reached.
+    """ LRUCache class that inherits from
+        BaseCaching and implements
+        a LRU (Least Recently Used) caching system.
     """
     def __init__(self):
-        """Initializes the cache.
+        """Initialize the cache with an
+           ordered dictionary to maintain
+           the order of usage.
         """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """Adds an item in the cache.
+        """Adds the item to the cache with the specified key.
         """
         if key is None or item is None:
             return
@@ -32,7 +34,7 @@ class LRUCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        """Retrieves an item by key.
+        """Retrieves the item from the cache with the specified key.
         """
         if key is not None and key in self.cache_data:
             self.cache_data.move_to_end(key, last=False)
