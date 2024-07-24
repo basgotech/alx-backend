@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''Task 0: Basic dictionary
+'''Basic dictionary
 '''
 
 
@@ -8,19 +8,20 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    '''A class `BasicCache` that inherits from `BaseCaching`
-       and is a caching system
+    '''BasicCache class that inherits from BaseCaching and provides
+        a basic caching system with put and get methods.
     '''
 
     def put(self, key, item):
-        '''assign to the dictionary `self.cache_data` the
-           `item` value for the key `key`
+        ''' Adds the item to the cache with the specified key.
+            If either the key or item is None, nothing is added.
         '''
         if key is not None and item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
-        '''return the value in `self.cache_data` linked to `key`
+        '''Retrieves the item from the cache with the specified key.
+            If the key is None or doesn't exist, returns None.
         '''
 
         return self.cache_data.get(key, None)
