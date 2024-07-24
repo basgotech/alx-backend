@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Task 2: LIFO Caching.
+"""LIFO Caching.
 """
 from collections import OrderedDict
 
@@ -7,18 +7,20 @@ from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """Represents an object that allows storing and
-    retrieving items from a dictionary with a LIFO
-    removal mechanism when the limit is reached.
+    """LIFOCache class that inherits
+       from BaseCaching and implements
+       a LIFO (Last In, First Out) caching system.
     """
     def __init__(self):
-        """Initializes the cache.
+        """Initialize the cache with an
+           ordered dictionary to maintain
+           the order of insertion.
         """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """Adds an item in the cache.
+        """Adds the item to the cache with the specified key.
         """
         if key is None or item is None:
             return
@@ -30,6 +32,6 @@ class LIFOCache(BaseCaching):
         self.cache_data.move_to_end(key, last=True)
 
     def get(self, key):
-        """Retrieves an item by key.
+        """Retrieves the item from the cache with the specified key.
         """
         return self.cache_data.get(key, None)
