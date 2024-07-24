@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
-'''Task 3: LRU Caching
-'''
-
-
+"""Least Recently Used caching module.
+"""
 from collections import OrderedDict
+
 from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    '''A class `LRUCache` that inherits from
-       `BaseCaching` and is a caching system
-    '''
-
+    """Represents an object that allows storing and
+    retrieving items from a dictionary with a LRU
+    removal mechanism when the limit is reached.
+    """
     def __init__(self):
-        '''initialize the cache
-        '''
+        """Initializes the cache.
+        """
         super().__init__()
         self.cache_data = OrderedDict()
 
@@ -38,4 +37,3 @@ class LRUCache(BaseCaching):
         if key is not None and key in self.cache_data:
             self.cache_data.move_to_end(key, last=False)
         return self.cache_data.get(key, None)
-
