@@ -17,10 +17,8 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-
 app = Flask(__name__)
 app.config.from_object(Config)
-
 
 babel = Babel(app)
 
@@ -28,7 +26,7 @@ babel = Babel(app)
 @babel.localeselector
 def get_locale() -> str:
     """
-    get locale
+    Gets locale from req
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
@@ -36,7 +34,7 @@ def get_locale() -> str:
 @app.route('/', strict_slashes=False)
 def index() -> str:
     """
-    render index
+    Renders 3-index html
     """
     return render_template('3-index.html')
 
